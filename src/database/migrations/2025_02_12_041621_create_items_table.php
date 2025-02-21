@@ -21,6 +21,7 @@ class CreateItemsTable extends Migration
             $table->string('item_brand')->nullable();
             $table->text('item_description');
             $table->integer('item_price');
+            $table->integer('sold')->nullable();
             $table->timestamps();
         });
     }

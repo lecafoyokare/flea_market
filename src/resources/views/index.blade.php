@@ -20,7 +20,7 @@
 <main class="main">
     <div class="item_wrapper" action="">
         @foreach($items as $item)
-        <a href="/{{$item->id}}" class="item">
+        <a href="/item/{{$item->id}}" class="item">
             <div class="item_img">
                 <img src="{{asset($item->item_img)}}" alt="商品画像">
             </div>
