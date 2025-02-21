@@ -20,13 +20,13 @@ use Illuminate\Support\Facades\Auth;
 
 route::group(['prefix' => ''],function() {
   Route::get('',[HomeController::class,'index']);
-  Route::get('{item_id}', [ItemController::class, 'item_view']);
+  Route::get('search', [HomeController::class, 'search']);
   Route::get('register', [AuthController::class, 'register']);
   Route::get('login', [AuthController::class, 'login']);
 } );
 
 Route::group(['prefix' => 'item'], function() {
-  // Route::get('{item_id}', [itemController::class, 'item_view']);
+  Route::get('{item_id}', [itemController::class, 'item_view']);
 });
 
 Route::group(['prefix' => 'user','middleware' => 'auth'], function () {
@@ -35,6 +35,7 @@ Route::group(['prefix' => 'user','middleware' => 'auth'], function () {
 
 Route::group(['prefix' => 'mypage'], function () {
   Route::get('profile', [MyopageController::class, 'profile']);
+  Route::post('profile/add', [MyopageController::class, 'add']);
 });
 
 Route::get('/laravel', function () {

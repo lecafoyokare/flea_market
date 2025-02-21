@@ -16,8 +16,8 @@
                     <img src={{asset("img/logo.svg")}} alt="" class="header-logo">
                 </div>
                 <div class="header_search">
-                    <form action="">
-                        <input type="text" placeholder="    なにをお探しですか？">
+                    <form action="/search" method="GET">
+                        <input type="text" name="word" placeholder="    なにをお探しですか？" value="@if(@isset($word)){{$word}}@endif">
                     </form>
                 </div>
                 {{-- @php
