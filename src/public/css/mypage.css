@@ -1,0 +1,237 @@
+
+.user {
+    width: 100%;
+    min-width: 370px;
+    height: 120px;
+    margin: 50px auto;
+    margin: 4.5vw auto;
+    display: flex;
+    align-items: center;
+}
+
+.user_icon {
+    width: 110px;
+    height: 90%;
+    margin-left: 20%;
+    border-radius: 50%;
+    background-color: #cccaca;
+}
+
+.user_name {
+    font-size: 28px;
+    margin-left: 5.5%;
+    padding-top: 10px;
+}
+
+.deco-file {
+    width: 170px;
+    min-width: 150px;
+    height: 30%;
+    margin: 0 20% 0 auto;
+}
+
+.deco-file button {
+    width: 100%;
+    height: 100%;
+    font-size: 14px;
+    border: 2px solid rgb(247, 104, 104);
+    color: rgb(247, 104, 104);
+    background-color: #fff;
+    text-align: center;
+    border-radius: 7px;
+}
+
+.deco-file button:hover {
+    cursor: pointer;
+}
+
+.screen_selection {
+    width: 100%;
+    min-width: 370px;
+    display: flex;
+    align-items: flex-end;
+    border-bottom: 1px solid #8b8080;
+}
+
+.screen_selection_item {
+    display: flex;
+    font-size: 20px;
+    margin: 0 0 3px 9vw;
+}
+
+.screen_selection_item button {
+    border: none;
+    font-size: 20px;
+    background-color: #fff;
+    color: gray;
+}
+
+.screen_selection_item button:hover {
+    opacity: 0.5;
+}
+
+.purchased_item {
+    margin-left: 4vw;
+}
+
+.main {
+    width: 100%;
+    max-width: 1600px;
+    min-width: 370px;
+    padding: 60px;
+    margin: 0 auto;
+}
+
+.item_wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.item_wrapper::after {
+    display: block;
+    content: "";
+    width: 260px;
+    height: 1px;
+}
+
+.item,
+.item_dummy {
+    width: 260px;
+    height: 290px;
+    margin: 0 0 43px 0;
+    border-radius: 5px 5px 0 0;
+}
+
+.item_img,
+.sold_item_img {
+    width: 100%;
+    height: 260px;
+    border-radius: 5px;
+    position: relative;
+}
+
+.item_img img,
+.sold_item_img img {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+}
+
+.sold_item_img::after {
+    content: "sold";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    font-size: 2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.item_ttl {
+    margin-top: 11px;
+    font-size: 17px;
+    font-weight: normal;
+}
+
+.item input {
+    display: none;
+}
+
+@media screen and (min-width: 1420px) {
+    .item {
+        width: 300px;
+        height: 330px;
+    }
+
+    .item_img,
+    .sold_item_img {
+        height: 330px;
+    }
+}
+
+@media screen and  (max-width:1085px) {
+    .user {
+        height: 9vw;
+        min-height: 70px;
+    }
+
+    .user_icon {
+        width: 8vw;
+        min-width:60px;
+        min-height: 50px;
+        margin-left: 10%;
+    }
+
+    .user_name {
+        font-size: 25px;
+        margin-left: 2%;
+    }
+
+    .deco-file {
+        width: 50px;
+        min-height: 30px;
+        margin-right: 10%;
+    }
+}
+
+@media screen and (max-width: 899px) {
+
+    .item_form::after {
+        width: 30vw;
+        min-width: 115px;
+    }
+
+    .item {
+        width: 35vw;
+        min-width: 115px;
+        height: auto;
+    }
+
+    .item_img,
+    .sold_item_img {
+        height: auto;
+    }
+}
+
+@media screen and (max-width:768px) {
+    .user_icon {
+        margin-left: 10px;
+    }
+
+    .deco-file {
+        margin-right: 10px;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .screen_selection {
+        height: 10vw;
+    }
+
+    .main {
+        padding: 8vw 10px;
+    }
+
+    .item_form::after {
+        width: 30vw;
+        min-width: 115px;
+    }
+
+    .item {
+        width: 30vw;
+        min-width: 110px;
+    }
+
+    .item_ttl {
+        margin-top: 6px;
+        font-size: 15px;
+    }
+}

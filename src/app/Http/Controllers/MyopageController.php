@@ -7,9 +7,13 @@ use Illuminate\Support\Facades\Auth;
 
 class MyopageController extends Controller
 {
+    public function mypage() {
+        return view('mypage');
+    }
+
     public function profile(){
         $user=Profile::where('user_id',Auth::id())->first();
-        // dd($user);
+        
         return view('profile',compact('user'));
     }
 
@@ -21,7 +25,7 @@ class MyopageController extends Controller
         $fileName = $file->getClientOriginalName();
         $filePath = $file->storeAs('image', $fileName, 'public');
         }
-        // dd("storage/".$filePath);
+        
         $form = [
             'user_id' => Auth::id(),
             'icon_img' => "storage/" . $filePath,

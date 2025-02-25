@@ -72,10 +72,6 @@
     -webkit-user-drag: none;
 }
 
-.add_my_list_yellow {
-    display: none;
-}
-
 .add_my_list label,
 .comment_link a {
     display: block;

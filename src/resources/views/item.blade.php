@@ -16,18 +16,19 @@
             <span class="item_price">&yen;<span class="item_price_font_big">{{$item->item_price}}</span> (税込)</span>
             <div class="item_evaluation">
                 <div class="add_my_list">
-                    <form action="/submit" onsubmit="handleFormSubmit(event)">
+                    <form action="/item/mylist" method="post">
+                    @csrf
                         <label for="add_my_list" class="add_my_list_click" onclick="">
-                            <img class="add_my_list_white" src="./img/add_my_list.svg" alt="">
-                            <img class="add_my_list_yellow" src="./img/add_my_list_yellow.svg" alt="">
-                            <input id="add_my_list" type="submit" value="">
+                            <img class="add_my_list_white" src="{{asset("img/add_my_list.svg")}}" alt="">
+                            <img class="add_my_list_yellow" src="{{asset("img/add_my_list_yellow.svg")}}" alt="">
+                            <input id="add_my_list" type="submit" name="item_id" value="{{$item->id}}">
                         </label>
                     </form>
                     <span>3</span>
                 </div>
                 <div class="comment_link">
                     <a href="#number_of_comment">
-                        <img src="./img/ふきだし.svg" alt="">
+                        <img src="{{asset("img/ふきだし.svg")}}" alt="">
                     </a>
                     <span>1</span>
                 </div>
@@ -95,9 +96,11 @@
 </main>
 </div>
 <style>
+    .add_my_list_yellow {
+        display: none;
+    }
     .purchase_procedure_btn button {
         /* background-color: #b4b4b4; */
     }
 </style>
-<script src="{{asset("js/item.js")}}></script>
 @endsection
