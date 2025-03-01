@@ -11,7 +11,7 @@
             <h2 class="profile_ttl">
                     プロフィール設定
             </h2>
-            <form id="profile_form" action="/mypage/profile/add" enctype="multipart/form-data" method="POST">
+            <form id="profile_form" action="/mypage/profile/create" enctype="multipart/form-data" method="POST">
             @csrf
                 <div class="profile_icon_item">
                     <div class="profile_icon">

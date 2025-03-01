@@ -20,15 +20,17 @@ use Illuminate\Support\Facades\Auth;
 
 route::group(['prefix' => ''],function() {
   Route::get('',[HomeController::class,'index']);
+  Route::get('page=mylist', [HomeController::class, 'pageMylist']);
   Route::get('search', [HomeController::class, 'search']);
   Route::get('register', [AuthController::class, 'register']);
   Route::get('login', [AuthController::class, 'login']);
+  Route::get('/sell', [HomeController::class, 'sell']);
   Route::get('/your', [HomeController::class, 'your']);
   Route::post('/yourMethod', [HomeController::class, 'yourMethod']);
 } );
 
 Route::group(['middleware' => 'auth'], function () {
-  Route::get('page=mylist', [HomeController::class, 'pageMylist']);
+  
 });
 
 Route::group(['prefix' => 'item'], function() {
@@ -36,14 +38,15 @@ Route::group(['prefix' => 'item'], function() {
   Route::post('mylist', [ItemController::class, 'mylist']);
 });
 
-Route::group(['prefix' => 'user','middleware' => 'auth'], function () {
-
+Route::group(['prefix' => 'purchase','middleware' => 'auth'], function () {
+  Route::get('{item_id}', [ItemController::class, 'item_view']);
+  Route::get('/address/{item_id}', [ItemController::class, 'item_view']);
 });
 
 Route::group(['prefix' => 'mypage', 'middleware' => 'auth'], function () {
   Route::get('', [MyopageController::class, 'mypage']);
   Route::get('profile', [MyopageController::class, 'profile']);
-  Route::post('profile/add', [MyopageController::class, 'add']);
+  Route::post('profile/create', [MyopageController::class, 'profileCreate']);
 });
 
 Route::get('/laravel', function () {

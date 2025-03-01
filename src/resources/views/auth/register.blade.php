@@ -20,8 +20,8 @@
                 </div>
                 <div class="register_form_item">
                     <span>メールアドレス</span>
-                    <input type="email" name="email" value="{{ old('email') }} 
-                    @error('email'){{ $message }}@enderror" />
+                    <input type="email" name="email" value="{{ old('email') }} " />
+                     @error('email'){{ $message }}@enderror
                 </div>
                 <div class="register_form_item">
                     <span>パスワード</span>

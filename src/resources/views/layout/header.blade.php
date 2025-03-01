@@ -42,7 +42,7 @@
                             <li class="nav_link"><a href="/login">ログイン</a></li>
                             @endif
                             <li class="nav_link"><a href="/mypage">マイページ</a></li>
-                            <li class="nav_link listing"><a href="">出品</a></li>
+                            <li class="nav_link listing"><a href="/sell">出品</a></li>
                         </ul>
                     </nav>
                 {{-- }

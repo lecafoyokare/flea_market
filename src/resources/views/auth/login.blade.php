@@ -16,10 +16,12 @@
                 <div class="login_form_item">
                     <span>ユーザー名/メールアドレス</span>
                     <input type="email" name="email" value="{{ old('email') }}" />
+                    @error('email'){{ $message }}@enderror
                 </div>
                 <div class="login_form_item">
                     <span>パスワード</span>
                     <input type="password" name="password" />
+                    @error('password'){{ $message }}@enderror
                 </div>
             </form>
             <div class="login_form_btn">

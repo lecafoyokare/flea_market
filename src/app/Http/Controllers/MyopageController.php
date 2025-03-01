@@ -17,7 +17,7 @@ class MyopageController extends Controller
         return view('profile',compact('user'));
     }
 
-    public function add(Request $request) {
+    public function profileCreate(Request $request) {
         $filePath = "";
         if ($request->icon_img!==null){
         $file = $request->file('icon_img');
