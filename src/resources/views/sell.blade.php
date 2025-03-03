@@ -32,33 +32,33 @@
                         <span>カテゴリー</span>
                         <div class="item_category">
                             <div class="category_name" data-input-id="category1">ファッション</div>
-                            <input type="hidden" id="category1" value="">
+                            <input type="hidden" name="category[]" id="category1" value="">
                             <div class="category_name" data-input-id="category2">家電</div>
-                            <input type="hidden" id="category2" value="">
+                            <input type="hidden" name="category[]" id="category2" value="">
                             <div class="category_name" data-input-id="category3">インテリア</div>
-                            <input type="hidden" id="category3" value="">
+                            <input type="hidden" name="category[]" id="category3" value="">
                             <div class="category_name" data-input-id="category4">レディース</div>
-                            <input type="hidden" id="category4" value="">
+                            <input type="hidden" name="category[]" id="category4" value="">
                             <div class="category_name" data-input-id="category5">メンズ</div>
-                            <input type="hidden" id="category5" value="">
+                            <input type="hidden" name="category[]" id="category5" value="">
                             <div class="category_name" data-input-id="category6">コスメ</div>
-                            <input type="hidden" id="category6" value="">
+                            <input type="hidden" name="category[]" id="category6" value="">
                             <div class="category_name" data-input-id="category7">本</div>
-                            <input type="hidden" id="category7" value="">
+                            <input type="hidden" name="category[]" id="category7" value="">
                             <div class="category_name" data-input-id="category8">ゲーム</div>
-                            <input type="hidden" id="category8" value="">
+                            <input type="hidden" name="category[]" id="category8" value="">
                             <div class="category_name" data-input-id="category9">スポーツ</div>
-                            <input type="hidden" id="category9" value="">
+                            <input type="hidden" name="category[]" id="category9" value="">
                             <div class="category_name" data-input-id="category10">キッチン</div>
-                            <input type="hidden" id="category10" value="">
+                            <input type="hidden" name="category[]" id="category10" value="">
                             <div class="category_name" data-input-id="category11">ハンドメイド</div>
-                            <input type="hidden" id="category11" value="">
+                            <input type="hidden" name="category[]" id="category11" value="">
                             <div class="category_name" data-input-id="category12">アクセサリー</div>
-                            <input type="hidden" id="category12" value="">
+                            <input type="hidden" name="category[]" id="category12" value="">
                             <div class="category_name" data-input-id="category13">おもちゃ</div>
-                            <input type="hidden" id="category13" value="">
+                            <input type="hidden" name="category[]" id="category13" value="">
                             <div class="category_name" data-input-id="category14">ベビー・キッズ</div>
-                            <input type="hidden" id="category14" value="">
+                            <input type="hidden" name="category[]" id="category14" value="">
                         </div>
                     </div>
                     <div class="sell_form_item">

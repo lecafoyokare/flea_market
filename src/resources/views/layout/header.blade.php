@@ -12,9 +12,9 @@
     <div class="wrapper">
         <header class="header">
             <div class="header_contents">
-                <div class="header_logo">
+                <a class="header_logo" href="/">
                     <img src={{asset("img/logo.svg")}} alt="" class="header-logo">
-                </div>
+                </a>
                 <div class="header_search">
                     <form action="/search" method="GET">
                         <input type="text" name="word" placeholder="    なにをお探しですか？" value="@if(@isset($word)){{$word}}@endif">

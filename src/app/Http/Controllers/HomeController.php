@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Models\Category;
 use App\Models\Item;
 use App\Models\Mylist;
 use Illuminate\Http\Request;
@@ -48,7 +50,7 @@ class HomeController extends Controller
             
         }
         
-        $form = [
+        $itemData = [
             'seller_id' => Auth::id(),
             'item_img' => "storage/" . $filePath,
             'item_condition' => $request->item_condition,
@@ -57,7 +59,20 @@ class HomeController extends Controller
             'item_description' => $request->item_description,
             'item_price' => $request->item_price
         ];
-        Item::create($form);
+        $item = Item::create($itemData);
+
+        $categories  = $request->category;
+
+        foreach ($categories as $category) {
+            if ($category != null) {
+                $categoryData = [
+                    'item_id' => $item->id,
+                    'category' => $category
+                ];
+                Category::create($categoryData);
+            }
+        }
+
         return redirect('/sell');
     }
 
