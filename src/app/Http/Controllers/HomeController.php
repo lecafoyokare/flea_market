@@ -10,7 +10,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $items = Item::where('seller_id','<>',Auth::id())->where('sold', null)->get();
+        $items = Item::where('sold', null)->get();
         $soldItems = Item::where('sold', 1)->get();
         $color=0;
         return view('index',compact('items','soldItems','color'));
@@ -45,19 +45,20 @@ class HomeController extends Controller
 
             $fileName = $file->getClientOriginalName();
             $filePath = $file->storeAs('image', $fileName, 'public');
+            
         }
-
+        
         $form = [
             'seller_id' => Auth::id(),
             'item_img' => "storage/" . $filePath,
-            'item_condition' => $request->item_conditon,
+            'item_condition' => $request->item_condition,
             'item_name' => $request->item_name,
             'item_brand' => $request->item_brand,
             'item_description' => $request->item_description,
             'item_price' => $request->item_price
         ];
         Item::create($form);
-        return redirect('/mypage/profile');
+        return redirect('/sell');
     }
 
     // public function mylist(Request $request) {

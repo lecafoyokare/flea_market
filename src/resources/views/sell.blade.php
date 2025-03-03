@@ -11,16 +11,17 @@
             <h2 class="sell_ttl">
                     商品の出品
             </h2>
-            <form id="sell_form" action="/mypage/profile/create" enctype="multipart/form-data" method="POST">
+            <form id="sell_form" action="/sell/create" enctype="multipart/form-data" method="POST">
             @csrf
                 <div class="sell_form_item">
                     <span>商品画像</span>
                     <div class="preview-area">
                         <div class="deco-file">
                         <label>画像を選択する
-                        <input type="file" name="item_img" onchange="preview(this)">
+                        <input type="file" name="item_img" onchange="preview(this)" multiple>
                         </label>
                         </div>
+                        <div class="image-preview"></div>
                     </div>
                 </div>
                 <div class="item_details">
@@ -64,7 +65,7 @@
                         <span>商品の状態</span>
                         <select name="item_condition">
                             <option>選択してください</option>
-                            <option value="">良好</option>
+                            <option value="良好">良好</option>
                         </select>
                     </div>
                 </div>

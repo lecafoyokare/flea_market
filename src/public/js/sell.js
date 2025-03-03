@@ -2,13 +2,13 @@
 function preview(elem) {
     const file = elem.files[0];
     const isOK = file?.type?.startsWith('image/');
-    const image = (file && isOK) ? `
-    <img src="${URL.createObjectURL(file)}">` : '';
+    const image = (file && isOK) ? `<img src="${URL.createObjectURL(file)}">` : '';
 
     const parent = elem.closest('.deco-file');
     if (parent) {
-        const previewArea = parent.parentNode;
-        if (previewArea && previewArea.classList.contains('preview-area')) {
+        parent.style.display = 'none';
+        const previewArea = parent.parentNode.querySelector('.image-preview');
+        if (previewArea) {
             previewArea.innerHTML = image;
         }
     }

@@ -25,6 +25,7 @@ route::group(['prefix' => ''],function() {
   Route::get('register', [AuthController::class, 'register']);
   Route::get('login', [AuthController::class, 'login']);
   Route::get('/sell', [HomeController::class, 'sell']);
+  Route::post('/sell/create', [HomeController::class, 'itemCreate']);
   Route::get('/your', [HomeController::class, 'your']);
   Route::post('/yourMethod', [HomeController::class, 'yourMethod']);
 } );

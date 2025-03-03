@@ -10,10 +10,10 @@
         <img src="" alt="">
     </div>
     <h2 class="user_name">{{Auth::user()->name}}</h2>
-    <div class="deco-file">
-        <button>
+    <div class="profile_edit">
+        <a href="mypage/profile">
             プロフィールを編集
-        </button>
+        </a>
     </div>
 </div>
 <div class="screen_selection">
