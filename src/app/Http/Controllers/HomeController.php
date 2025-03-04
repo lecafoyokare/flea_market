@@ -10,19 +10,30 @@ use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $items = Item::where('sold', null)->get();
         $soldItems = Item::where('sold', 1)->get();
         $color=0;
-        return view('index',compact('items','soldItems','color'));
+        $param = [
+            'word' => $request->word,
+            'items' => $items,
+            'soldItems' => $soldItems,
+            'color' => $color = 0
+        ];
+        return view('index',$param);
     }
 
-    public function pageMylist()
+    public function pageMylist(Request $request)
     {
         $mylists = Mylist::where('user_id', Auth::id())->get();
         $color = 1;
-        return view('index', compact('mylists', 'color'));
+        $param = [
+            'word' => $request->word,
+            'mylists' => $mylists,
+            'color' => $color = 1
+        ];
+        return view('index', $param);
     }
 
     public function search(Request $request)
@@ -34,6 +45,11 @@ class HomeController extends Controller
             'color' => $color = 0
         ];
         return view('index', $param);
+    }
+
+    public function messageView()
+    {
+        return view('message');
     }
     
     public function sell() {

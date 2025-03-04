@@ -14,6 +14,7 @@
             <button class="my_list_btn" formaction="/page=mylist">
                 マイリスト
             </button>
+            <input type="hidden" name="word" value="@if(@isset($word)){{$word}}@endif">
         </form>
     </div>
 </div>

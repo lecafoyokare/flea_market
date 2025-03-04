@@ -41,8 +41,20 @@
                             @else
                             <li class="nav_link"><a href="/login">ログイン</a></li>
                             @endif
-                            <li class="nav_link"><a href="/mypage">マイページ</a></li>
-                            <li class="nav_link listing"><a href="/sell">出品</a></li>
+                            <li class="nav_link">
+                                @if (Auth::check())
+                                <a href="/mypage">マイページ</a>
+                                @else
+                                <a href="/message">マイページ</a>
+                                @endif
+                            </li>
+                            <li class="nav_link listing">
+                                @if (Auth::check())
+                                <a href="/sell">出品</a>
+                                @else
+                                <a href="/message">出品</a>
+                                @endif
+                            </li>
                         </ul>
                     </nav>
                 {{-- }

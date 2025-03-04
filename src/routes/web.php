@@ -22,6 +22,7 @@ route::group(['prefix' => ''],function() {
   Route::get('',[HomeController::class,'index']);
   Route::get('page=mylist', [HomeController::class, 'pageMylist']);
   Route::get('search', [HomeController::class, 'search']);
+  Route::get('message', [HomeController::class, 'messageView']);
   Route::get('register', [AuthController::class, 'register']);
   Route::get('login', [AuthController::class, 'login']);
   Route::get('/sell', [HomeController::class, 'sell']);
