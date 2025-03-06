@@ -12,8 +12,24 @@ class HomeController extends Controller
 {
     public function index(Request $request)
     {
-        $items = Item::where('sold', null)->get();
-        $soldItems = Item::where('sold', 1)->get();
+        if(Auth::id()!=null) {
+            $items = Item::whereNull('sold')
+                            ->where(function ($query) {
+                                $query->where('user_id', '<>', Auth::id())
+                                    ->orWhere('user_id', '=', null);
+                            })
+                            ->get();
+            $soldItems = Item::where('sold', 1)
+                            ->where(function ($query) {
+                                $query->where('user_id', '<>', Auth::id())
+                                    ->orWhere('user_id', '=', null);
+                            })
+                            ->get();
+        } else {
+            $items = Item::whereNull('sold')->get();
+            $soldItems = Item::where('sold', 1)->get();
+        }
+        
         $color=0;
         $param = [
             'word' => $request->word,
