@@ -28,7 +28,7 @@
                             <input id="add_my_list" type="submit" name="item_id" value="{{$item->id}}">
                         </label>
                     </form>
-                    <span>3</span>
+                    <span>{{$mylistCount}}</span>
                 </div>
                 <div class="comment_link">
                     <a href="#number_of_comment">

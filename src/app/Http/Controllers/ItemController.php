@@ -13,7 +13,9 @@ class ItemController extends Controller
 
         $categories=Category::where('item_id',$item_id->id)->get();
         
-        $mylist = Mylist::where('user_id',Auth::id())->first();
+        $mylist = Mylist::where('user_id',Auth::id())
+                    ->where('item_id',$item_id->id)
+                        ->first();
         
         if ($mylist!=null) {
             $color = 1;
@@ -21,10 +23,13 @@ class ItemController extends Controller
             $color = 0;
         }
 
+        $mylistCount = Mylist::where('item_id',$item_id->id)->count();
+        
         $data = [
             'color' => $color,
             'item' => $item_id,
-            'categories' => $categories
+            'categories' => $categories,
+            'mylistCount' => $mylistCount
         ];
 
         return view('item',$data);
