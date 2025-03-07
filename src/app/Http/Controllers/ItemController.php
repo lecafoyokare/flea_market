@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Item;
 use App\Models\Mylist;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -10,6 +11,8 @@ class ItemController extends Controller
 {
     public function itemView(Item $item_id) {
 
+        $categories=Category::where('item_id',$item_id->id)->get();
+        
         $mylist = Mylist::where('user_id',Auth::id())->first();
         
         if ($mylist!=null) {
@@ -19,8 +22,9 @@ class ItemController extends Controller
         }
 
         $data = [
-            'color' =>$color,
-            'item' =>$item_id,  
+            'color' => $color,
+            'item' => $item_id,
+            'categories' => $categories
         ];
 
         return view('item',$data);

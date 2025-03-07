@@ -54,12 +54,13 @@
                 <table>
                     <tr>
                         <th>カテゴリー</th>
+                        @isset ($categories)
+                        @foreach ($categories as $category)
                         <td>
-                            <div class="item_category_wrapper">洋服</div>
+                            <div class="item_category_wrapper">{{$category->category}}</div>
                         </td>
-                        <td>
-                            <div class="item_category_wrapper">メンズ</div>
-                        </td>
+                        @endforeach
+                        @endisset
                     </tr>
                     <tr>
                         <th>商品の状態</th>
