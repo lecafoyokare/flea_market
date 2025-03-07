@@ -16,7 +16,11 @@
             <span class="item_price">&yen;<span class="item_price_font_big">{{$item->item_price}}</span> (税込)</span>
             <div class="item_evaluation">
                 <div class="add_my_list">
+                    @if (Auth::check())
                     <form action="/item/mylist" method="post">
+                    @else
+                    <form action="/message" method="get">
+                    @endif
                     @csrf
                         <label for="add_my_list" class="add_my_list_click" onclick="">
                             <img class="add_my_list_white" src="{{asset("img/add_my_list.svg")}}" alt="">
@@ -96,10 +100,16 @@
 </main>
 </div>
 <style>
+@if ($color==0)
     .add_my_list_yellow {
         display: none;
     }
-    .purchase_procedure_btn button {
+@else
+    .add_my_list_white {
+        display: none;
+    }
+@endif
+.purchase_procedure_btn button {
         /* background-color: #b4b4b4; */
     }
 </style>

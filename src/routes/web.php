@@ -36,7 +36,7 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 Route::group(['prefix' => 'item'], function() {
-  Route::get('{item_id}', [ItemController::class, 'item_view']);
+  Route::get('{item_id}', [ItemController::class, 'itemView']);
   Route::post('mylist', [ItemController::class, 'mylist']);
 });
 

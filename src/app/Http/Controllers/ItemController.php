@@ -8,9 +8,18 @@ use Illuminate\Support\Facades\Auth;
 
 class ItemController extends Controller
 {
-    public function item_view(Item $item_id) {
+    public function itemView(Item $item_id) {
+
+        $mylist = Mylist::where('user_id',Auth::id())->first();
+        
+        if ($mylist!=null) {
+            $color = 1;
+        } else {
+            $color = 0;
+        }
 
         $data = [
+            'color' =>$color,
             'item' =>$item_id,  
         ];
 
