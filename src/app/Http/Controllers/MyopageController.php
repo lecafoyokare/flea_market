@@ -34,7 +34,15 @@ class MyopageController extends Controller
             'address' => $request->address,
             'building_name' => $request->building_name,
         ];
-        Profile::create($form);
+
+        $profile = Profile::where('user_id',Auth::id())->first();
+        
+        if ($profile==null) {
+            Profile::create($form);
+        } else {
+            Profile::find($profile->id)->update($form);
+        }
+        
         return redirect('/mypage/profile');
     }
 }
