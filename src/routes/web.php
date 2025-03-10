@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MyopageController;
+use App\Http\Controllers\PurchaseController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -38,11 +39,13 @@ Route::group(['middleware' => 'auth'], function () {
 Route::group(['prefix' => 'item'], function() {
   Route::get('{item_id}', [ItemController::class, 'itemView']);
   Route::post('mylist', [ItemController::class, 'mylist']);
+  Route::post('comment', [ItemController::class, 'comment']);
 });
 
 Route::group(['prefix' => 'purchase','middleware' => 'auth'], function () {
-  Route::get('{item_id}', [ItemController::class, 'item_view']);
-  Route::get('/address/{item_id}', [ItemController::class, 'item_view']);
+  Route::get('{item_id}', [PurchaseController::class, 'purchaseGet']);
+  Route::get('/address/{item_id}', [PurchaseController::class, 'address']);
+  Route::post('/address/update', [PurchaseController::class, 'addressUpdate']);
 });
 
 Route::group(['prefix' => 'mypage', 'middleware' => 'auth'], function () {

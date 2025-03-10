@@ -12,7 +12,7 @@
         </div>
         <div class="item_right">
             <h2 class="item_ttl">{{$item->item_name}}</h2>
-            <span class="item_brand">ブランド名</span>
+            <span class="item_brand">{{$item->item_brand}}</span>
             <span class="item_price">&yen;<span class="item_price_font_big">{{$item->item_price}}</span> (税込)</span>
             <div class="item_evaluation">
                 <div class="add_my_list">
@@ -38,7 +38,12 @@
                 </div>
             </div>
             <div class="purchase_procedure_btn">
-                <form action="">
+                @if (Auth::check())
+                <form action="/purchase/{{$item->id}}" method="GET">
+                @else
+                <form action="/message" method="GET">
+                @endif
+                @csrf
                     <button>購入手続きへ</button> <!--disable判定-->
                     <input type="hidden">
                 </form>
@@ -72,27 +77,34 @@
             </section>
             <div class="comment">
                 <span class="number_of_comment" id="number_of_comment">
-                    コメント(1)
+                    コメント({{$commentCount}})
                 </span>
+                @foreach ($comments as $comment)
                 <div class="user_comment">
                     <div class="user">
-                        <div class="user_icon"></div>
-                        <span class="user_name">admin</span>
+                        <img class="user_icon" src="{{asset($comment->profile->icon_img)}}">
+                        <span class="user_name">{{$comment->profile->user->name}}</span>
                     </div>
                     <p class="comment_txt">
-                        こちらにコメントが入ります。
+                        {{$comment->comment}}
                     </p>
                 </div>
+                @endforeach
                 <div class="comment_on_item">
                     <h4 class="comment_on_item_ttl">
                         商品へのコメント
                     </h4>
-                    <form action="" class="comment_on_item_form">
-                        <textarea name="" id=""></textarea>
+                    @if (Auth::check())
+                    <form id="comment_form" action="/item/comment" class="comment_on_item_form" method="POST">
+                    @else
+                    <form id="comment_form" action="/message" class="comment_on_item_form" method="get">
+                    @endif
+                    @csrf
+                        <textarea name="comment"></textarea>
+                        <input type="hidden" name="item_id" value="{{$item->id}}">
                     </form>
                     <div class="comment_on_item_btn">
-                        <input type="submit" value="コメントを送信する">
-                        <input type="hidden">
+                        <input form="comment_form" type="submit" value="コメントを送信する">
                     </div>
                 </div>
             </div>

@@ -10,11 +10,11 @@
         <div class="purchase_left">
             <div class="purchase_top">
                 <div class="item_img">
-                    <img src="https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/Armani+Mens+Clock.jpg" alt="">
+                    <img src="{{$item_id->id}}" alt="">
                 </div>
                 <div class="purchase_top_box">
-                    <h2 class="item_name">商品名</h2>
-                    <span class="item_price"><span class="yen">&yen;</span>47,000</span>
+                    <h2 class="item_name">{{$item_id->id}}</h2>
+                    <span class="item_price"><span class="yen">&yen;</span>{{$item_id->id}}</span>
                 </div>
             </div>
             <div class="purchase_middle">
@@ -31,7 +31,7 @@
             <div class="purchase_bottom">
                 <div class="purchase_bottom_ttl">
                     <h5>配送先</h5>
-                    <a href="./address.html">変更する</a>
+                    <a href="/purchase/address/{{$item_id->id}}">変更する</a>
                 </div>
                 <div class="purchase_bottom_box">
                     <span class="address">〒 XXX-YYYY</span>

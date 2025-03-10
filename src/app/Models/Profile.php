@@ -17,4 +17,9 @@ class Profile extends Model
         'building_name',
         'postal_code',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User');
+    }
 }

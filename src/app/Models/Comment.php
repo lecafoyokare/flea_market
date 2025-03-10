@@ -11,7 +11,12 @@ class Comment extends Model
 
     protected $fillable = [
         'item_id',
-        'user_id',
+        'profile_id',
         'comment',
     ];
+
+    public function profile()
+    {
+        return $this->belongsTo('App\Models\Profile');
+    }
 }

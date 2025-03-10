@@ -11,22 +11,23 @@
             <h2 class="address_ttl">
                     住所の変更
             </h2>
-            <form action="">
+            <form id="address_form" action="/purchase/address/update?id={{$item_id->id}}" method="POST">
+            @csrf
                 <div class="address_form_item">
                     <span>郵便番号</span>
-                    <input type="text">
+                    <input type="text" name="postal_code">
                 </div>
                 <div class="address_form_item">
                     <span>住所</span>
-                    <input type="text">
+                    <input type="text" name="address">
                 </div>
                 <div class="address_form_item">
                     <span>建物名</span>
-                    <input type="text">
+                    <input type="text" name="building_name">
                 </div>
             </form>
             <div class="address_form_btn">
-                <input type="submit" value="更新する">
+                <input form="address_form" type="submit" value="更新する">
             </div>
         </div>
     </div>

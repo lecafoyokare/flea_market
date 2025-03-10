@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use App\Models\Item;
 use App\Models\Mylist;
 use App\Models\Category;
+use App\Models\Profile;
+use App\Models\Comment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -24,12 +26,18 @@ class ItemController extends Controller
         }
 
         $mylistCount = Mylist::where('item_id',$item_id->id)->count();
+
+        $commentCount = Comment::where('item_id',$item_id->id)->count();
+        
+        $comments = Comment::where('item_id', $item_id->id)->get();
         
         $data = [
             'color' => $color,
             'item' => $item_id,
             'categories' => $categories,
-            'mylistCount' => $mylistCount
+            'mylistCount' => $mylistCount,
+            'commentCount' => $commentCount,
+            'comments' => $comments
         ];
 
         return view('item',$data);
@@ -52,6 +60,22 @@ class ItemController extends Controller
         }
 
         return redirect('item/'.$request->item_id);
+    }
+
+    public function comment(Request $request) {
+
+        $porofile = Profile::where('user_id',Auth::id())->first();
+        
+        $form = [
+            'profile_id' => $porofile->id,
+            'item_id' => $request->item_id,
+            'comment' => $request->comment
+        ];
+        
+        Comment::create($form);
+
+        return redirect('item/' . $request->item_id);
+
     }
 
 }
