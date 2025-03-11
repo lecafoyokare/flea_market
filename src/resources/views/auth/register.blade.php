@@ -16,17 +16,17 @@
                 <div class="register_form_item">
                     <span>ユーザー名</span>
                     <input type="text" name="name" value="{{ old('name') }}" />
-                    @error('name'){{ $message }}@enderror
+                    <span class="error">@error('name'){{ $message }}@enderror</span>
                 </div>
                 <div class="register_form_item">
                     <span>メールアドレス</span>
                     <input type="email" name="email" value="{{ old('email') }} " />
-                     @error('email'){{ $message }}@enderror
+                    <span class="error">@error('email'){{ $message }}@enderror</span>
                 </div>
                 <div class="register_form_item">
                     <span>パスワード</span>
-                    <input type="password" name="password" />
-                    @error('password'){{ $message }}@enderror
+                    <input type="password" name="password" value="{{ old('password') }}"/>
+                    <sapn class="error">@error('password'){{ $message }}@enderror</sapn>
                 </div>
                 <div class="register_form_item">
                     <span>確認用パスワード</span>
