@@ -63,10 +63,13 @@
                     </div>
                     <div class="sell_form_item">
                         <span>商品の状態</span>
-                        <select name="item_condition">
-                            <option>選択してください</option>
-                            <option value="良好">良好</option>
-                        </select>
+                        <div class="select-wrapper">
+                            <select class="select" name="item_condition">
+                                <option>選択してください</option>
+                                <option value="良好"><span class="checkDisplay">✓</span>良好</option>
+                            </select>
+                        </div>
+                        
                     </div>
                 </div>
                 <h3 class="item_name_description_ttl">

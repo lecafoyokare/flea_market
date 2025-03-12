@@ -7,7 +7,7 @@
 @section('content')
 <div class="user">
     <div class="user_icon">
-        <img src="" alt="">
+        <img src="@isset($profile){{asset($profile->icon_img)}}@endisset" alt="">
     </div>
     <h2 class="user_name">{{Auth::user()->name}}</h2>
     <div class="profile_edit">

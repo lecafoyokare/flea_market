@@ -8,7 +8,8 @@ use Illuminate\Support\Facades\Auth;
 class MyopageController extends Controller
 {
     public function mypage() {
-        return view('mypage');
+        $profile = Profile::where('user_id', Auth::id())->first();
+        return view('mypage',compact('profile'));
     }
 
     public function profile(){

@@ -7,9 +7,22 @@
 @section('content')
 <div class="main">
     <div class="message">
-        <h1>この機能はログイン後にご利用いただけます。</h1>
-        <form class="thanks_form" action="/login">
-            <button>ログインする</button>
+        <h1>
+            @if(@isset($displayMessage))
+            {{$displayMessage}}
+            @else
+            この機能はログイン後にご利用いただけます。
+            @endif
+        </h1>
+        <form class="message_form" action="@if(@isset($btnPath)){{$btnPath}}@else'/login'@endif" method="GET">
+        @csrf
+            <button>
+                @if(@isset($btnMessage))
+                {{$btnMessage}}
+                @else
+                ログインする
+                @endif
+            </button>
         </form>
     </div>
 </div>

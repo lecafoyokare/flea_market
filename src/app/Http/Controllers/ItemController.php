@@ -66,15 +66,26 @@ class ItemController extends Controller
 
         $porofile = Profile::where('user_id',Auth::id())->first();
         
-        $form = [
+        if ($porofile!=null) {
+            $form = [
             'profile_id' => $porofile->id,
             'item_id' => $request->item_id,
             'comment' => $request->comment
-        ];
-        
-        Comment::create($form);
+            ];
+            
+            Comment::create($form);
 
-        return redirect('item/' . $request->item_id);
+            return redirect('item/' . $request->item_id);
+        } else {
+
+            $param = [
+                'displayMessage' => 'プロフィールを作成してください。',
+                'btnMessage' => '戻る',
+                'btnPath' => '/'.'item/' . $request->item_id
+            ];
+
+            return view('message',$param);
+        }
 
     }
 
