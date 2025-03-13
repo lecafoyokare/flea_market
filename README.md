@@ -42,9 +42,9 @@ MySQL
 
 8. php artisan key:generate  
 
-9. ブラウザでlocalhostと検索。成功していれば以下のような画面になります。
+9. ブラウザでlocalhostと検索。成功していれば以下のような画面になります。※もし商品データがない場合は下記に追加の方法が載っています。
 
-   ![Image](https://github.com/user-attachments/assets/d6b37b61-a448-4d5e-a9e9-a3ab69e506cc)
+   ![Image](https://github.com/user-attachments/assets/0f24e7ae-8428-4242-bb31-370402081e44)
 
    もし以下のようなエラーがでた場合はexitコマンドを入力しカウントディレクトリへ移動  
    次のコマンドを実行してください sudo chmod -R 777 src/*  
