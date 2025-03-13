@@ -98,6 +98,12 @@
     font-size: 17px;
 }
 
+.error {
+    display: inline-block;
+    margin-top: 3px;
+    color: red;
+}
+
 .profile_form_btn {
     width: 100%;
     height: 40px;

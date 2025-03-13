@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Item;
 use App\Models\Mylist;
 use Illuminate\Http\Request;
+use App\Http\Requests\SellRequest;
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
@@ -72,7 +73,7 @@ class HomeController extends Controller
         return view('sell');
     }
 
-    public function itemCreate(Request $request) {
+    public function itemCreate(SellRequest $request) {
         $filePath = "";
         if ($request->item_img !== null) {
             $file = $request->file('item_img');
@@ -83,7 +84,7 @@ class HomeController extends Controller
         }
         
         $itemData = [
-            'seller_id' => Auth::id(),
+            'user_id' => Auth::id(),
             'item_img' => "storage/" . $filePath,
             'item_condition' => $request->item_condition,
             'item_name' => $request->item_name,
@@ -106,27 +107,5 @@ class HomeController extends Controller
         }
 
         return redirect('/sell');
-    }
-
-    // public function mylist(Request $request) {
-    //     $items = Item::where('sold', null)->get();
-    //     $soldItems = Item::where('sold', 1)->get();
-    //     return view('index', compact('items', 'soldItems'));
-    // }
-
-    public function your() {
-        return view('test');
-    }
-
-    public function yourMethod(Request $request)
-    {
-        $name = $request->input('name');
-
-        // あなたのロジックをここに追加
-        $response = [
-            'message' => 'Hello, ' . $name
-        ];
-
-        return response()->json($response);
     }
 }

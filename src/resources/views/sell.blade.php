@@ -65,11 +65,14 @@
                         <span>商品の状態</span>
                         <div class="select-wrapper">
                             <select class="select" name="item_condition">
-                                <option>選択してください</option>
-                                <option value="良好"><span class="checkDisplay">✓</span>良好</option>
+                                <option value="">選択してください</option>
+                                <option value="良好">良好</option>
+                                <option value="目立った傷や汚れなし">目立った傷や汚れなし</option>
+                                <option value="やや傷や汚れあり">やや傷や汚れあり</option>
+                                <option value="状態が悪い">状態が悪い</option>
                             </select>
                         </div>
-                        
+                        <span class="error">@error('item_condition'){{ $message }}@enderror</span>
                     </div>
                 </div>
                 <h3 class="item_name_description_ttl">
@@ -78,6 +81,7 @@
                 <div class="sell_form_item">
                     <span>商品名</span>
                     <input name="item_name" type="text">
+                    <span class="error">@error('item_name'){{ $message }}@enderror</span>
                 </div>
                 <div class="sell_form_item">
                     <span>ブランド名</span>
@@ -85,10 +89,12 @@
                 </div>
                 <div class="sell_form_item">
                     <span>商品の説明</span>
+                    <span class="error">@error('item_description'){{ $message }}@enderror</span>
                     <textarea name="item_description" id=""></textarea>
                 </div>
                 <div class="sell_form_item">
                     <span>販売価格</span>
+                    <span class="error">@error('item_price'){{ $message }}@enderror</span>
                     <div class="item_price">
                         <input name="item_price" type="text">
                     </div>

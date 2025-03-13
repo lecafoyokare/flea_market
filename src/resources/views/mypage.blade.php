@@ -18,11 +18,11 @@
 </div>
 <div class="screen_selection">
     <div class="screen_selection_item">
-        <form action="">
-            <button class="exhibited_item" onclick="">
+        <form action="" method="GET">
+            <button class="exhibited_item" formaction="/mypage/page=sell">
                 出品した商品
             </button>
-            <button class="purchased_item" onclick="">
+            <button class="purchased_item" formaction="/mypage/page=buy">
                 購入した商品
             </button>
         </form>
@@ -30,7 +30,8 @@
 </div>
 <main class="main">
     <div class="item_wrapper" action="">
-        {{-- @foreach($items as $item)
+        @isset($items)
+        @foreach($items as $item)
         <a href="/item/{{$item->id}}" class="item">
             <div class="item_img">
                 <img src="{{asset($item->item_img)}}" alt="商品画像">
@@ -39,7 +40,8 @@
                 {{$item->item_name}}
             </h2>
         </a>
-        @endforeach --}}
+        @endforeach
+        @endisset
         <div class="item_dummy"></div>
     </div>
 </main>

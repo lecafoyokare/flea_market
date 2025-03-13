@@ -38,15 +38,19 @@
                 </div>
             </div>
             <div class="purchase_procedure_btn">
+            @if ($sold==1)
+                <button>売り切れ</button>
+            @else
                 @if (Auth::check())
                 <form action="/purchase/{{$item->id}}" method="GET">
                 @else
                 <form action="/message" method="GET">
                 @endif
                 @csrf
-                    <button>購入手続きへ</button> <!--disable判定-->
+                    <button>購入手続きへ</button>
                     <input type="hidden">
                 </form>
+            @endif
             </div>
             <section class="item_description">
                 <h3 class="item_description_ttl">商品説明</h3>
@@ -94,6 +98,7 @@
                     <h4 class="comment_on_item_ttl">
                         商品へのコメント
                     </h4>
+                    <span class="error">@error('comment'){{ $message }}@enderror</span>
                     @if (Auth::check())
                     <form id="comment_form" action="/item/comment" class="comment_on_item_form" method="POST">
                     @else
@@ -122,8 +127,11 @@
         display: none;
     }
 @endif
-.purchase_procedure_btn button {
-        /* background-color: #b4b4b4; */
+
+@if ($sold==1)
+    .purchase_procedure_btn button {
+        background-color: #b4b4b4;
     }
+@endif
 </style>
 @endsection

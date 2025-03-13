@@ -16,10 +16,12 @@
                 <div class="address_form_item">
                     <span>郵便番号</span>
                     <input type="text" name="postal_code">
+                    <span class="error">@error('postal_code'){{ $message }}@enderror</span>
                 </div>
                 <div class="address_form_item">
                     <span>住所</span>
                     <input type="text" name="address">
+                    <span class="error">@error('address'){{ $message }}@enderror</span>
                 </div>
                 <div class="address_form_item">
                     <span>建物名</span>

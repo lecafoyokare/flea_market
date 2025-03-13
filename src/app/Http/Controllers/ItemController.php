@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Profile;
 use App\Models\Comment;
 use Illuminate\Http\Request;
+use App\Http\Requests\CommentRequest;
 use Illuminate\Support\Facades\Auth;
 
 class ItemController extends Controller
@@ -25,6 +26,12 @@ class ItemController extends Controller
             $color = 0;
         }
 
+        if ($item_id->sold != null) {
+            $sold = 1;
+        } else {
+            $sold = 0;
+        }
+
         $mylistCount = Mylist::where('item_id',$item_id->id)->count();
 
         $commentCount = Comment::where('item_id',$item_id->id)->count();
@@ -33,6 +40,7 @@ class ItemController extends Controller
         
         $data = [
             'color' => $color,
+            'sold' => $sold,
             'item' => $item_id,
             'categories' => $categories,
             'mylistCount' => $mylistCount,
@@ -62,7 +70,7 @@ class ItemController extends Controller
         return redirect('item/'.$request->item_id);
     }
 
-    public function comment(Request $request) {
+    public function comment(CommentRequest $request) {
 
         $porofile = Profile::where('user_id',Auth::id())->first();
         

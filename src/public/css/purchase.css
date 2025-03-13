@@ -200,6 +200,12 @@
     color: #fafafa;
 }
 
+.error {
+    color: red;
+    display: block;
+    padding: 3px 0 0 50px;
+}
+
 @media screen and (max-width: 1135px) {
     .main {
         padding: 3vw 2px;

@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 use App\Models\Profile;
 use Illuminate\Http\Request;
+use App\Http\Requests\ProfileRequest;
+use App\Models\Item;
+use App\Models\Purchase;
 use Illuminate\Support\Facades\Auth;
 
 class MyopageController extends Controller
@@ -18,7 +21,18 @@ class MyopageController extends Controller
         return view('profile',compact('user'));
     }
 
-    public function profileCreate(Request $request) {
+    public function pageSell() {
+        $items = Item::where('user_id', Auth::id())->get();
+        return view('mypage', compact('items'));
+    }
+
+    public function pageBuy()
+    {
+        $items = Purchase::where('user_id', Auth::id())->get();
+        return view('mypage', compact('items'));
+    }
+
+    public function profileCreate(ProfileRequest $request) {
         $filePath = "";
         if ($request->icon_img!==null){
         $file = $request->file('icon_img');

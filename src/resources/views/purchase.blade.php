@@ -17,29 +17,37 @@
                     <span class="item_price"><span class="yen">&yen;</span>{{$item->item_price}}</span>
                 </div>
             </div>
-            <div class="purchase_middle">
-                <h5 class="purchase_middle_ttl">
-                    支払い方法
-                </h5>
-                <div class="select-wrapper">
-                    <select class="select" name="" id="select">
-                        <option value="">選択してください</option>
-                        <option value="コンビニ払い">コンビニ払い</option>
-                        <option value="カード払い">カード払い</option>
-                    </select>
+            <form id="purchase_form" action="/purchase/purchasePost" method="POST">
+            @csrf
+                <div class="purchase_middle">
+                    <h5 class="purchase_middle_ttl">
+                        支払い方法
+                    </h5>
+                    <div class="select-wrapper">
+                        <select class="select" name="payment" id="select">
+                            <option value="">選択してください</option>
+                            <option value="コンビニ払い">コンビニ払い</option>
+                            <option value="カード払い">カード払い</option>
+                        </select>
+                    </div>
+                    <span class="error">@error('payment'){{ $message }}@enderror</span>
+                </div>
+                <div class="purchase_bottom">
+                    <div class="purchase_bottom_ttl">
+                        <h5>配送先</h5>
+                        <a href="/purchase/address/{{$item->id}}">変更する</a>
+                    </div>
+                    <div class="purchase_bottom_box">
+                        <input type="hidden" name="item_id" value="{{$item->id}}">
+                        <span class="address">〒 {{$postal_code}}</span>
+                        <input type="hidden" name="postal_code" value="{{$postal_code}}">
+                        <span>{{$address." ".$building_name}}</span>
+                        <input type="hidden" name="address" value="{{$address}}">
+                        <input type="hidden" name="building_name" value="{{$building_name}}">
+                    </div>
                 </div>
             </div>
-            <div class="purchase_bottom">
-                <div class="purchase_bottom_ttl">
-                    <h5>配送先</h5>
-                    <a href="/purchase/address/{{$item->id}}">変更する</a>
-                </div>
-                <div class="purchase_bottom_box">
-                    <span class="address">〒 {{$profile->postal_code}}</span>
-                    <span>{{$profile->address." ".$profile->building_name}}</span>
-                </div>
-            </div>
-        </div>
+        </form>
         <div class="purchase_top_right">
             <div class="confirm">
                 <div class="price_confirm">
@@ -47,7 +55,7 @@
                         商品代金
                     </span>
                     <span class="price_confirm_right">
-                        <span class="yen">&yen;</span>47,000
+                        <span class="yen">&yen;</span>{{$item->item_price}}
                     </span>
                 </div>
             </div>
@@ -60,7 +68,7 @@
                 </div>
             </div>
             <div class="purchase_btn">
-                <input type="submit" value="購入する">
+                <input form="purchase_form" type="submit" value="購入する">
             </div>
         </div>
     </div>

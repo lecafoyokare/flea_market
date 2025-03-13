@@ -27,14 +27,17 @@
                 <div class="profile_form_item">
                     <span>ユーザー名</span>
                     <input type="text" name="name" value="{{old('name')}}@isset($user){{$user->name}}@endisset">
+                    <span class="error">@error('name'){{ $message }}@enderror</span>
                 </div>
                 <div class="profile_form_item">
                     <span>郵便番号</span>
                     <input type="text" name="postal_code" value="{{old('postal_code')}}@isset($user){{$user->postal_code}}@endisset">
+                    <span class="error">@error('postal_code'){{ $message }}@enderror</span>
                 </div>
                 <div class="profile_form_item">
                     <span>住所</span>
                     <input type="text" name="address" value="{{old('address')}}@isset($user){{$user->address}}@endisset">
+                    <span class="error">@error('address'){{ $message }}@enderror</span>
                 </div>
                 <div class="profile_form_item">
                     <span>建物名</span>

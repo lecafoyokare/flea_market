@@ -32,8 +32,6 @@ route::group(['prefix' => ''],function() {
   
   Route::get('/sell', [HomeController::class, 'sell']);
   Route::post('/sell/create', [HomeController::class, 'itemCreate']);
-  Route::get('/your', [HomeController::class, 'your']);
-  Route::post('/yourMethod', [HomeController::class, 'yourMethod']);
 } );
 
 Route::group(['middleware' => 'auth'], function () {
@@ -48,16 +46,15 @@ Route::group(['prefix' => 'item'], function() {
 
 Route::group(['prefix' => 'purchase','middleware' => 'auth'], function () {
   Route::get('{item_id}', [PurchaseController::class, 'purchaseGet']);
+  Route::post('purchasePost', [PurchaseController::class, 'purchasePost']);
   Route::get('/address/{item_id}', [PurchaseController::class, 'address']);
   Route::post('/address/update', [PurchaseController::class, 'addressUpdate']);
 });
 
 Route::group(['prefix' => 'mypage', 'middleware' => 'auth'], function () {
   Route::get('', [MyopageController::class, 'mypage']);
+  Route::get('page=sell', [MyopageController::class, 'pageSell']);
+  Route::get('page=buy', [MyopageController::class, 'pageBuy']);
   Route::get('profile', [MyopageController::class, 'profile']);
   Route::post('profile/create', [MyopageController::class, 'profileCreate']);
-});
-
-Route::get('/laravel', function () {
-    return view('welcome');
 });
